@@ -7,6 +7,8 @@
 #include"controller.h"
 #include"QDate"
 
+
+
 namespace Ui {
 class MainWindow;
 }
@@ -20,6 +22,8 @@ public:
     ~MainWindow();
 
     virtual void update();
+
+
 
 private slots:
 
@@ -39,10 +43,13 @@ private slots:
 
     void on_actionnew_triggered();
 
+
 private:
     Ui::MainWindow *ui;
     ToDoList* toDoList;
     Controller* controller;
+
+
 };
 
 #endif // MAINWINDOW_H

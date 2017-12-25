@@ -2,6 +2,8 @@
 #include "ui_mainwindow.h"
 #include"QStringList"
 #include"activity.h"
+#include<QMessageBox>
+#include"adddialog.h"
 
 MainWindow::MainWindow(ToDoList* l,Controller* c,QWidget *parent) :
     QMainWindow(parent),
@@ -13,6 +15,7 @@ MainWindow::MainWindow(ToDoList* l,Controller* c,QWidget *parent) :
     controller=c;
     ui->setupUi(this);
     toDoList->loadList();
+
 
 }
 
@@ -127,9 +130,15 @@ void MainWindow::on_actionsearch_triggered()
 
 void MainWindow::on_actionnew_triggered()
 {
-    QString t=ui->lineEdit->text();
+    AddDialog aDialog;
+    aDialog.setModal(true);
+    aDialog.exec();
+
+    QString t=aDialog.getActivity();
     QDate d=ui->calendarWidget->selectedDate();
     bool cS=false;
     controller->write(t,d,cS);
     ui->lineEdit->clear();
 }
+
+
