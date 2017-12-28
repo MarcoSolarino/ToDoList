@@ -2,6 +2,7 @@
 #define EDITDIALOG_H
 
 #include <QDialog>
+#include<QDate>
 
 namespace Ui {
 class EditDialog;
@@ -16,11 +17,18 @@ public:
     ~EditDialog();
     const QString getActivity();
     const QDate getDate();
+    bool getButtonClicked();
     void setActivity(const QString& a);
     void setDate(const QDate& d);
 
+private slots:
+    void on_pushButton_clicked();
+
 private:
     Ui::EditDialog *ui;
+    QString activity;
+    QDate deadLine;
+    bool buttonClicked;
 };
 
 #endif // EDITDIALOG_H

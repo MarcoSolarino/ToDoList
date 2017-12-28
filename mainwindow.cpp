@@ -4,6 +4,7 @@
 #include"activity.h"
 #include<QMessageBox>
 #include"adddialog.h"
+#include"editdialog.h"
 
 MainWindow::MainWindow(ToDoList* l,Controller* c,QWidget *parent) :
     QMainWindow(parent),
@@ -87,17 +88,29 @@ void MainWindow::on_actiondelete_selected_triggered()
 
 void MainWindow::on_actionedit_selected_triggered()
 {
-    QListWidgetItem* itemSelected=ui->listWidget->currentItem();
-    QString t=ui->lineEdit->text();
-    QString d=ui->calendarWidget->selectedDate().toString("dd.MM.yyyy");
+    EditDialog eDialog;
+    eDialog.setModal(true);
+    eDialog.setActivity(ui->listWidget->currentItem()->text().split("\n").at(0));
+    QString dl= ui->listWidget->currentItem()->text().split("\n").at(1);
+    eDialog.setDate(QDate::fromString(dl,"dd.MM.yyyy"));
 
-    if(!ui->listWidget->isItemSelected(itemSelected))
-        ui->label->setText("Select an activity to edit!");
-    else{
-        itemSelected->setText(t+"\n"+d);
+
+    QListWidgetItem* itemSelected=ui->listWidget->currentItem();
+    if(ui->listWidget->isItemSelected(itemSelected)){
+        eDialog.exec();
+
+        if(eDialog.getButtonClicked()){
+            QString t=eDialog.getActivity();
+            QString d=eDialog.getDate().toString("dd.MM.yyyy");
+            itemSelected->setText(t+"\n"+d);
+            on_actionsave_triggered();
         }
-    on_actionsave_triggered();
-    ui->lineEdit->clear();
+
+    }
+
+    else{
+        ui->label->setText("Select an activity to edit!");
+    }
 }
 
 
@@ -138,7 +151,7 @@ void MainWindow::on_actionnew_triggered()
         QDate d=aDialog.getDate();
         bool cS=false;
         controller->write(t,d,cS);
-        ui->lineEdit->clear();
+
     }
 }
 
