@@ -6,7 +6,8 @@ AddDialog::AddDialog(QWidget *parent) :
     ui(new Ui::AddDialog)
 {
     ui->setupUi(this);
-    activity="";
+    activity="  ";
+    ui->dateEdit->setDate(QDate::currentDate());
 }
 
 AddDialog::~AddDialog()
@@ -19,4 +20,9 @@ void AddDialog::on_pushButton_clicked()
     activity=ui->lineEdit->text();
     AddDialog::close();
 
+}
+
+const QDate AddDialog::getDate(){
+    QDate d=ui->dateEdit->date();
+    return d;
 }

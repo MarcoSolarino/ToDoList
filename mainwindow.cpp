@@ -133,12 +133,13 @@ void MainWindow::on_actionnew_triggered()
     AddDialog aDialog;
     aDialog.setModal(true);
     aDialog.exec();
-
-    QString t=aDialog.getActivity();
-    QDate d=ui->calendarWidget->selectedDate();
-    bool cS=false;
-    controller->write(t,d,cS);
-    ui->lineEdit->clear();
+    if(aDialog.getActivity()!="  "){
+        QString t=aDialog.getActivity();
+        QDate d=aDialog.getDate();
+        bool cS=false;
+        controller->write(t,d,cS);
+        ui->lineEdit->clear();
+    }
 }
 
 

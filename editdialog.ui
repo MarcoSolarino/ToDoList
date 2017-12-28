@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>AddDialog</class>
- <widget class="QDialog" name="AddDialog">
+ <class>EditDialog</class>
+ <widget class="QDialog" name="EditDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>528</width>
-    <height>126</height>
+    <width>541</width>
+    <height>115</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,32 +18,32 @@
     <rect>
      <x>20</x>
      <y>40</y>
-     <width>281</width>
+     <width>261</width>
      <height>28</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QDateEdit" name="dateEdit">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>40</y>
+     <width>110</width>
+     <height>29</height>
     </rect>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>430</x>
+     <x>420</x>
      <y>40</y>
      <width>84</width>
      <height>28</height>
     </rect>
    </property>
    <property name="text">
-    <string>Ok</string>
-   </property>
-  </widget>
-  <widget class="QDateEdit" name="dateEdit">
-   <property name="geometry">
-    <rect>
-     <x>310</x>
-     <y>40</y>
-     <width>110</width>
-     <height>29</height>
-    </rect>
+    <string>ok</string>
    </property>
   </widget>
  </widget>

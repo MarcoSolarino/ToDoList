@@ -14,9 +14,12 @@ class AddDialog : public QDialog
 public:
     explicit AddDialog(QWidget *parent = 0);
     ~AddDialog();
+
     const QString getActivity(){
         return activity;
     }
+
+    const QDate getDate();
 
 private slots:
     void on_pushButton_clicked();

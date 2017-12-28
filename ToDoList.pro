@@ -29,7 +29,8 @@ SOURCES += \
     todolist.cpp \
     controller.cpp \
     activity.cpp \
-    adddialog.cpp
+    adddialog.cpp \
+    editdialog.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -38,11 +39,13 @@ HEADERS += \
     activity.h \
     todolist.h \
     controller.h \
-    adddialog.h
+    adddialog.h \
+    editdialog.h
 
 FORMS += \
         mainwindow.ui \
-    adddialog.ui
+    adddialog.ui \
+    editdialog.ui
 
 RESOURCES += \
     utilities.qrc \
