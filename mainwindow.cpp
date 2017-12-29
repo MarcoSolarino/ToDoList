@@ -86,7 +86,50 @@ void MainWindow::on_actiondelete_selected_triggered()
     on_actionsave_triggered();
 }
 
-void MainWindow::on_actionedit_selected_triggered()
+
+void MainWindow::on_actionundo_triggered()
+{
+    update();
+}
+
+void MainWindow::on_actionsearch_triggered()
+{
+    /*QList<Activity*> srcList=controller->search(ui->calendarWidget->selectedDate());
+    QListWidgetItem* item;
+    ui->listWidget->clear();
+    QString t;
+    QString d;
+    bool cS;
+    for(auto itr=srcList.begin();itr!=srcList.end();itr++){
+        t=(*itr)->getTask();
+        d=(*itr)->getDate().toString("dd.MM.yyyy");
+        cS=(*itr)->getDone();
+        item=new QListWidgetItem(t+"\n"+d,ui->listWidget);
+        item->setFlags(item->flags() | Qt::ItemIsUserCheckable);
+        if(cS)
+            item->setCheckState(Qt::Checked);
+        else
+            item->setCheckState((Qt::Unchecked));
+    }*/
+}
+
+void MainWindow::on_actionnew_triggered()
+{
+    AddDialog aDialog;
+    aDialog.setModal(true);
+    aDialog.exec();
+    if(aDialog.getActivity()!="  "){
+        QString t=aDialog.getActivity();
+        QDate d=aDialog.getDate();
+        bool cS=false;
+        controller->write(t,d,cS);
+
+    }
+}
+
+
+
+void MainWindow::on_listWidget_doubleClicked()
 {
     EditDialog eDialog;
     eDialog.setModal(true);
@@ -112,47 +155,3 @@ void MainWindow::on_actionedit_selected_triggered()
         ui->label->setText("Select an activity to edit!");
     }
 }
-
-
-
-void MainWindow::on_actionundo_triggered()
-{
-    update();
-}
-
-void MainWindow::on_actionsearch_triggered()
-{
-    QList<Activity*> srcList=controller->search(ui->calendarWidget->selectedDate());
-    QListWidgetItem* item;
-    ui->listWidget->clear();
-    QString t;
-    QString d;
-    bool cS;
-    for(auto itr=srcList.begin();itr!=srcList.end();itr++){
-        t=(*itr)->getTask();
-        d=(*itr)->getDate().toString("dd.MM.yyyy");
-        cS=(*itr)->getDone();
-        item=new QListWidgetItem(t+"\n"+d,ui->listWidget);
-        item->setFlags(item->flags() | Qt::ItemIsUserCheckable);
-        if(cS)
-            item->setCheckState(Qt::Checked);
-        else
-            item->setCheckState((Qt::Unchecked));
-    }
-}
-
-void MainWindow::on_actionnew_triggered()
-{
-    AddDialog aDialog;
-    aDialog.setModal(true);
-    aDialog.exec();
-    if(aDialog.getActivity()!="  "){
-        QString t=aDialog.getActivity();
-        QDate d=aDialog.getDate();
-        bool cS=false;
-        controller->write(t,d,cS);
-
-    }
-}
-
-

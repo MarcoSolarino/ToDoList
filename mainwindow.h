@@ -35,14 +35,14 @@ private slots:
 
     void on_actiondelete_selected_triggered();
 
-    void on_actionedit_selected_triggered();
-
     void on_actionundo_triggered();
 
     void on_actionsearch_triggered();
 
     void on_actionnew_triggered();
 
+
+    void on_listWidget_doubleClicked();
 
 private:
     Ui::MainWindow *ui;

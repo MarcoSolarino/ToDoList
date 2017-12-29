@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1226</width>
+    <width>692</width>
     <height>724</height>
    </rect>
   </property>
@@ -43,23 +43,13 @@
      <string/>
     </property>
    </widget>
-   <widget class="QCalendarWidget" name="calendarWidget">
-    <property name="geometry">
-     <rect>
-      <x>710</x>
-      <y>10</y>
-      <width>501</width>
-      <height>591</height>
-     </rect>
-    </property>
-   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1226</width>
+     <width>692</width>
      <height>25</height>
     </rect>
    </property>
@@ -70,7 +60,6 @@
     <addaction name="actionnew"/>
     <addaction name="actionsave"/>
     <addaction name="actionsearch"/>
-    <addaction name="actionedit_selected"/>
     <addaction name="actiondelete_selected"/>
     <addaction name="actiondelete_lit"/>
     <addaction name="actionundo"/>
@@ -88,7 +77,6 @@
    <addaction name="actionnew"/>
    <addaction name="actionsave"/>
    <addaction name="actionsearch"/>
-   <addaction name="actionedit_selected"/>
    <addaction name="actiondelete_selected"/>
    <addaction name="actionundo"/>
   </widget>
@@ -109,15 +97,6 @@
    </property>
    <property name="text">
     <string>delete selected</string>
-   </property>
-  </action>
-  <action name="actionedit_selected">
-   <property name="icon">
-    <iconset resource="resources.qrc">
-     <normaloff>:/rec/img/Oxygen-Icons.org-Oxygen-Actions-document-edit.ico</normaloff>:/rec/img/Oxygen-Icons.org-Oxygen-Actions-document-edit.ico</iconset>
-   </property>
-   <property name="text">
-    <string>edit selected</string>
    </property>
   </action>
   <action name="actiondelete_lit">
