@@ -1,5 +1,6 @@
 #include "calendardialog.h"
 #include "ui_calendardialog.h"
+#include<QTextCharFormat>
 
 
 CalendarDialog::CalendarDialog(ToDoList *l, Controller *c, QWidget *parent) :
@@ -12,6 +13,7 @@ CalendarDialog::CalendarDialog(ToDoList *l, Controller *c, QWidget *parent) :
     ui->setupUi(this);
     toDoList->loadList();
     selDate=QDate::currentDate();
+    update();
 
 }
 
@@ -22,8 +24,11 @@ CalendarDialog::~CalendarDialog()
 
 void CalendarDialog::update(){
     QList<Activity*> list=toDoList->getList();
+    QTextCharFormat dayHighlight;
+    dayHighlight.setBackground(Qt::blue);
     for (auto itr=list.begin(); itr!=list.end();itr++){
-
+        QDate aDay=(*itr)->getDate();
+        ui->calendarWidget->setDateTextFormat(aDay,dayHighlight);
     }
 }
 
