@@ -5,6 +5,8 @@
 #include<QMessageBox>
 #include"adddialog.h"
 #include"editdialog.h"
+#include"calendardialog.h"
+#include<QDate>
 
 MainWindow::MainWindow(ToDoList* l,Controller* c,QWidget *parent) :
     QMainWindow(parent),
@@ -94,7 +96,14 @@ void MainWindow::on_actionundo_triggered()
 
 void MainWindow::on_actionsearch_triggered()
 {
-    /*QList<Activity*> srcList=controller->search(ui->calendarWidget->selectedDate());
+    ToDoList* l= new ToDoList;
+    Controller* c=new Controller(l);
+
+    CalendarDialog cDialog(l,c);
+    cDialog.setModal(true);
+    cDialog.exec();
+    QDate selDate=cDialog.getSelDate();
+    QList<Activity*> srcList=controller->search(selDate);
     QListWidgetItem* item;
     ui->listWidget->clear();
     QString t;
@@ -110,7 +119,7 @@ void MainWindow::on_actionsearch_triggered()
             item->setCheckState(Qt::Checked);
         else
             item->setCheckState((Qt::Unchecked));
-    }*/
+    }
 }
 
 void MainWindow::on_actionnew_triggered()

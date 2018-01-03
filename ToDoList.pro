@@ -30,7 +30,8 @@ SOURCES += \
     controller.cpp \
     activity.cpp \
     adddialog.cpp \
-    editdialog.cpp
+    editdialog.cpp \
+    calendardialog.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -40,12 +41,15 @@ HEADERS += \
     todolist.h \
     controller.h \
     adddialog.h \
-    editdialog.h
+    editdialog.h \
+    calendardialog.h
 
 FORMS += \
         mainwindow.ui \
     adddialog.ui \
-    editdialog.ui
+    editdialog.ui \
+    calendardialog.ui \
+    searchdialog.ui
 
 RESOURCES += \
     utilities.qrc \
