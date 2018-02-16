@@ -51,17 +51,22 @@ void MainWindow::update(){
 void MainWindow::on_actionsave_triggered()
 {
     toDoList->clearList();
-    for(int row=0;row<ui->listWidget->count();row++){
-        QListWidgetItem* item=ui->listWidget->item(row);
-        bool cS;
-        if(item->checkState()==Qt::Checked)
-            cS=true;
-        else
-            cS=false;
-        QString task=item->text().split("\n").at(0);
-        QString date=item->text().split("\n").at(1);
-        QDate dL=QDate::fromString(date,"dd.MM.yyyy");
-        controller->save(task,dL,cS);
+    if(ui->listWidget->count()!=0){
+        for(int row=0;row<ui->listWidget->count();row++){
+            QListWidgetItem* item=ui->listWidget->item(row);
+            bool cS;
+            if(item->checkState()==Qt::Checked)
+                cS=true;
+            else
+                cS=false;
+            QString task=item->text().split("\n").at(0);
+            QString date=item->text().split("\n").at(1);
+            QDate dL=QDate::fromString(date,"dd.MM.yyyy");
+            controller->save(task,dL,cS);
+        }
+    }
+    else{
+        controller->clear();
     }
 }
 
@@ -92,6 +97,7 @@ void MainWindow::on_actiondelete_selected_triggered()
 void MainWindow::on_actionundo_triggered()
 {
     update();
+    ui->label_2->setText("");
 }
 
 void MainWindow::on_actionsearch_triggered()
