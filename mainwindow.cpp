@@ -120,7 +120,7 @@ void MainWindow::on_actionsearch_triggered()
         else
             item->setCheckState((Qt::Unchecked));
     }
-    ui->label_2->setText("Activities for the selected date");
+    ui->label_2->setText("Activities for "+selDate.toString("dd.MM.yyyy"));
 }
 
 void MainWindow::on_actionnew_triggered()
