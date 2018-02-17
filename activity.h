@@ -4,6 +4,7 @@
 #include<QString>
 #include<QDate>
 
+
 class Activity{
 public:
     explicit Activity(QString t, QDate dL, bool d=false):task(t),deadLine(dL),done(d){}

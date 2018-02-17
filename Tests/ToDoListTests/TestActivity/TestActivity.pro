@@ -1,15 +1,17 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2017-11-15T22:22:32
+# Project created by QtCreator 2018-02-17T17:14:43
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += testlib
 
+QT       -= gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+TARGET = tst_testactivitytest
+CONFIG   += console
+CONFIG   -= app_bundle
 
-TARGET = ToDoList
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -25,33 +27,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-        main.cpp \
-        mainwindow.cpp \
-    todolist.cpp \
-    controller.cpp \
-    activity.cpp \
-    adddialog.cpp \
-    editdialog.cpp \
-    calendardialog.cpp
+        tst_testactivitytest.cpp 
 
-HEADERS += \
-        mainwindow.h \
-    subject.h \
-    observer.h \
-    activity.h \
-    todolist.h \
-    controller.h \
-    adddialog.h \
-    editdialog.h \
-    calendardialog.h
-
-FORMS += \
-        mainwindow.ui \
-    adddialog.ui \
-    editdialog.ui \
-    calendardialog.ui \
-    searchdialog.ui
-
-RESOURCES += \
-    utilities.qrc \
-    resources.qrc
+DEFINES += SRCDIR=\\\"$$PWD/\\\"

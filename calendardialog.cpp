@@ -25,7 +25,7 @@ CalendarDialog::~CalendarDialog()
 void CalendarDialog::update(){
     QList<Activity*> list=toDoList->getList();
     QTextCharFormat dayHighlight;
-    dayHighlight.setBackground(Qt::blue);
+    dayHighlight.setBackground(Qt::yellow);
     for (auto itr=list.begin(); itr!=list.end();itr++){
         QDate aDay=(*itr)->getDate();
         ui->calendarWidget->setDateTextFormat(aDay,dayHighlight);
