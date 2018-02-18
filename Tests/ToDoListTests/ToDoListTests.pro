@@ -1,4 +1,6 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
-    TestActivity
+    TestActivity \
+    TestList
+    

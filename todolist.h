@@ -11,20 +11,23 @@
 #include"QTextStream"
 
 class ToDoList: public Subject{
-public:
 
+public:
     ToDoList(){}
 
     virtual void addObserver(Observer *o){
         observers.push_back(o);
     }
+
     virtual void removeObserver(Observer *o){
         observers.removeOne(o);
     }
+
     virtual void notify(){
         for(Observer* observer: observers)
             observer->update();
     }
+
     void addActivity(Activity* a){
         list.push_back(a);
         notify();
@@ -47,6 +50,10 @@ public:
 
     void clearList(){
         list.clear();
+    }
+
+    int getElements()const{
+        return list.count();
     }
 
     void saveList();

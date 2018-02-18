@@ -18,6 +18,7 @@ public:
         return deadLine;
     }
 
+
     void setTask(const QString t){
         task=t;
     }
