@@ -2,5 +2,6 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
     TestActivity \
-    TestList
+    TestList \
+    TestController
     
