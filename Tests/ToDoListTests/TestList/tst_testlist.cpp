@@ -17,6 +17,7 @@ private Q_SLOTS:
     void testDeleteAll();
     void testSearch();
     void testGetList();
+    void testGetElements();
 
 
 };
@@ -59,6 +60,13 @@ void TestList::testGetList(){
     Activity *a=new Activity("tesxt",QDate::currentDate(),false);
     l4.addActivity(a);
     QVERIFY2(l4.getList().count()==l4.getElements(),"getList doesn't work proprely!");
+}
+
+void TestList::testGetElements(){
+    ToDoList l5;
+    Activity *a=new Activity("text",QDate::currentDate(),false);
+    l5.addActivity(a);
+    QVERIFY2(l5.getElements()==1,"getElements doesn't work proprely!");
 }
 
 

@@ -14,6 +14,7 @@ public:
 private Q_SLOTS:
     void testWriteClear();
     void testSearch();
+
 };
 
 TestController::TestController()
@@ -38,6 +39,8 @@ void TestController::testSearch(){
     QDate WDate=QDate::fromString("23.04.1997","dd.MM.yyyy");
     QVERIFY2(c->search(WDate).count()==0,"search doesn't work proprely!");
 }
+
+
 
 QTEST_APPLESS_MAIN(TestController)
 
