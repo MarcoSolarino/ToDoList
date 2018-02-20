@@ -18,12 +18,14 @@ void ToDoList::saveList(){
 
         }
     }
+
 }
 
 void ToDoList::loadList(){
     QString filename="./list.txt";
     QFile file(filename);
     QTextStream memo(&file);
+    list.clear();
     if(file.open(QIODevice::ReadOnly)){
         while(!memo.atEnd()){
             QString line=memo.readLine();
