@@ -77,23 +77,32 @@ void TestList::testSaveList(){
     Activity *a=new Activity("test",QDate::currentDate(),false);
     ls.addActivity(a);
     ls.saveList();
-            QString filename="./home/percrosser/QtProjects/build-ToDoList-Desktop_Qt_5_9_1_GCC_64bit-Debug/list.txt";
-            QFile file(filename);
-            QTextStream memo(&file);
-            if(file.open(QIODevice::ReadOnly)){
-                int count=0;
-                QString line;
-                while(!memo.atEnd()){
-                    count++;
-                    line=memo.readLine();
-                }
-             QVERIFY2(count==1,"saveList doesn't work!");
-             QVERIFY2(line=="1,  test,  "+QDate::currentDate().toString("dd.MM.yyyy"),"saveList doesn't write in list.txt correctly!");
+    QString filename="./home/percrosser/QtProjects/build-ToDoList-Desktop_Qt_5_9_1_GCC_64bit-Debug/list.txt";
+    QFile file(filename);
+    QTextStream memo(&file);
+    if(file.open(QIODevice::ReadOnly)){
+        int count=0;
+        QString line;
+        while(!memo.atEnd()){
+            count++;
+            line=memo.readLine();
+        }
+        QVERIFY2(count==1,"saveList doesn't work!");
+        QVERIFY2(line=="1,  test,  "+QDate::currentDate().toString("dd.MM.yyyy"),"saveList doesn't write in list.txt correctly!");
+        ls.deleteAll();
+        ls.saveList();
+        if(file.open(QIODevice::ReadOnly)){
+            int count=0;
+            while(!memo.atEnd()){
+                count++;
             }
+            QVERIFY2(count==0,"saveList doesn't work when the list is empty!");
 
-
-
+        }
+    }
 }
+
+
 
 void TestList::testLoadList(){
     ToDoList ll;

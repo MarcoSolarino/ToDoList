@@ -14,7 +14,7 @@ public:
 private Q_SLOTS:
     void testWriteClear();
     void testSearch();
-
+    void testSave();
 };
 
 TestController::TestController()
@@ -38,6 +38,18 @@ void TestController::testSearch(){
     QVERIFY2(c->search(QDate::currentDate()).count()==1,"search doesn't work proprely!");
     QDate WDate=QDate::fromString("23.04.1997","dd.MM.yyyy");
     QVERIFY2(c->search(WDate).count()==0,"search doesn't work proprely!");
+}
+
+void TestController::testSave(){
+    ToDoList *l=new ToDoList;
+    Controller *c=new Controller(l);
+    c->save("Test", QDate::currentDate(),false);
+    ToDoList TList;
+    TList.loadList();
+    QVERIFY2(TList.getElements()==1,"save doesn't work");
+    c->save("test2",QDate::currentDate(),true);
+    TList.loadList();
+    QVERIFY2(TList.getElements()==2,"save doasen't iterate elements");
 }
 
 
