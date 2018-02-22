@@ -55,3 +55,5 @@ FORMS += \
 RESOURCES += \
     utilities.qrc \
     resources.qrc
+
+

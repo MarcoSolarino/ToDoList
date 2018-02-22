@@ -4,8 +4,6 @@
 #include "/home/percrosser/QtProjects/ToDoList/todolist.cpp"
 #include <QList>
 
-
-
 class TestList : public QObject
 {
     Q_OBJECT
@@ -21,6 +19,8 @@ private Q_SLOTS:
     void testGetElements();
     void testSaveList();
     void testLoadList();
+private:
+    Activity *a=new Activity("test",QDate::currentDate(),false);
 
 
 };
@@ -31,16 +31,18 @@ TestList::TestList()
 
 void TestList::testAddRemoveAct()
 {
-    Activity *a=new Activity("text",QDate::currentDate(),false);
     ToDoList l1;
     l1.addActivity(a);
     QVERIFY2(l1.getElements()==1,"AddActivity doesn't work proprely!");
+    auto itr=l1.getList().begin();
+    QVERIFY2((*itr)->getTask()=="text","addActivity doesn't set task correctly");
+    QVERIFY2((*itr)->getDate()==QDate::currentDate(),"addActivity doesn't set date correctly");
+    QVERIFY2((*itr)->getDone()==false,"addActivity soesn't set done correctly!");
     l1.removeActivity(a);
     QVERIFY2(l1.getElements()==0,"RemoveActivity doesn't work proprely!");
 }
 
 void TestList::testDeleteAll(){
-    Activity *a=new Activity("text",QDate::currentDate(),false);
     Activity *b=new Activity("text2",QDate::currentDate(),true);
     ToDoList l2;
     l2.addActivity(a);
@@ -60,21 +62,18 @@ void TestList::testSearch(){
 
 void TestList::testGetList(){
     ToDoList l4;
-    Activity *a=new Activity("tesxt",QDate::currentDate(),false);
     l4.addActivity(a);
     QVERIFY2(l4.getList().count()==l4.getElements(),"getList doesn't work proprely!");
 }
 
 void TestList::testGetElements(){
     ToDoList l5;
-    Activity *a=new Activity("text",QDate::currentDate(),false);
     l5.addActivity(a);
     QVERIFY2(l5.getElements()==1,"getElements doesn't work proprely!");
 }
 
 void TestList::testSaveList(){
     ToDoList ls;
-    Activity *a=new Activity("test",QDate::currentDate(),false);
     ls.addActivity(a);
     ls.saveList();
     QString filename="./home/percrosser/QtProjects/build-ToDoList-Desktop_Qt_5_9_1_GCC_64bit-Debug/list.txt";
@@ -102,11 +101,8 @@ void TestList::testSaveList(){
     }
 }
 
-
-
 void TestList::testLoadList(){
     ToDoList ll;
-    Activity *a=new Activity("test",QDate::currentDate(),false);
     ll.addActivity(a);
     ll.saveList();
     ToDoList ls;

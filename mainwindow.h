@@ -23,8 +23,6 @@ public:
 
     virtual void update();
 
-
-
 private slots:
 
     void on_actionsave_triggered();
@@ -40,7 +38,6 @@ private slots:
     void on_actionsearch_triggered();
 
     void on_actionnew_triggered();
-
 
     void on_listWidget_doubleClicked();
 
