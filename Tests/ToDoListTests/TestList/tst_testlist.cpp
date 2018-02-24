@@ -11,6 +11,7 @@ class TestList : public QObject
 public:
     TestList();
 
+
 private Q_SLOTS:
     void testAddRemoveAct();
     void testDeleteAll();
@@ -35,7 +36,7 @@ void TestList::testAddRemoveAct()
     l1.addActivity(a);
     QVERIFY2(l1.getElements()==1,"AddActivity doesn't work proprely!");
     auto itr=l1.getList().begin();
-    QVERIFY2((*itr)->getTask()=="text","addActivity doesn't set task correctly");
+    QVERIFY2((*itr)->getTask()=="test","addActivity doesn't set task correctly");
     QVERIFY2((*itr)->getDate()==QDate::currentDate(),"addActivity doesn't set date correctly");
     QVERIFY2((*itr)->getDone()==false,"addActivity soesn't set done correctly!");
     l1.removeActivity(a);

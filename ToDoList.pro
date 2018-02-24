@@ -49,8 +49,7 @@ FORMS += \
         mainwindow.ui \
     adddialog.ui \
     editdialog.ui \
-    calendardialog.ui \
-    searchdialog.ui
+    calendardialog.ui
 
 RESOURCES += \
     utilities.qrc \
